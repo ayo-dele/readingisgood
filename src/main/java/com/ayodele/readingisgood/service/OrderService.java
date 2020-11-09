@@ -5,4 +5,5 @@ import com.ayodele.readingisgood.dto.OrderResponse;
 
 public interface OrderService {
     OrderResponse saveOrder(OrderRequest orderRequest) throws Exception;
+    // List<OrderResponse> getOrderByCustomer(Integer customerId) throws Exception;
 }

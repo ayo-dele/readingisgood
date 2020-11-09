@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -29,7 +28,7 @@ public class OrderRestController {
 
     //Place a new order and update stock
     @PostMapping(produces = "application/json", consumes = "application/json")
-    public ResponseEntity<OrderResponse> addNewOrder(@RequestBody @Valid OrderRequest orderRequest, BindingResult bindingResult, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<OrderResponse> addNewOrder(@RequestBody @Valid OrderRequest orderRequest, BindingResult bindingResult) {
         BindingErrorsResponse errors = new BindingErrorsResponse();
         HttpHeaders headers = new HttpHeaders();
         if (bindingResult.hasErrors() || (orderRequest == null)) {
@@ -47,6 +46,24 @@ public class OrderRestController {
     }
 
     //List all orders for a customer
+
+//    @GetMapping(path = "/customer", produces = "application/json", consumes = "application/json")
+//    public ResponseEntity<OrderResponse> getOrderByCustomer(@RequestBody @Valid Integer customerId, BindingResult bindingResult) {
+//        BindingErrorsResponse errors = new BindingErrorsResponse();
+//        HttpHeaders headers = new HttpHeaders();
+//        if (bindingResult.hasErrors() || (customerId == null)) {
+//            errors.addAllErrors(bindingResult);
+//            headers.add("errors", errors.toJSON());
+//            return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
+//        }
+//        try {
+//            OrderResponse orderResponse = this.orderService.saveOrder(orderRequest);
+//            return new ResponseEntity<>(orderResponse, headers, HttpStatus.CREATED);
+//        } catch (Exception ex) {
+//            headers.add("errors", ex.getMessage());
+//            return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
     // View order
 

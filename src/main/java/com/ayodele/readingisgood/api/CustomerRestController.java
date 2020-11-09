@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -27,8 +26,9 @@ public class CustomerRestController {
     }
 
     // Register new customer
+
     @PostMapping(produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Customer> addNewCustomer(@RequestBody @Valid Customer customer, BindingResult bindingResult, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<Customer> addNewCustomer(@RequestBody @Valid Customer customer, BindingResult bindingResult) {
         BindingErrorsResponse errors = new BindingErrorsResponse();
         HttpHeaders headers = new HttpHeaders();
         if (bindingResult.hasErrors() || (customer == null)) {
