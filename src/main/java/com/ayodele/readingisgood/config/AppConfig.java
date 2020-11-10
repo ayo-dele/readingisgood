@@ -2,8 +2,10 @@ package com.ayodele.readingisgood.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
-@Configuration
 @EnableJpaAuditing
-public class JPAAuditConfig {
+@Configuration
+@EnableOpenApi
+public class AppConfig {
 }

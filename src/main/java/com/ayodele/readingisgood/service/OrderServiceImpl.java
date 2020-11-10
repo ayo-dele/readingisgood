@@ -83,13 +83,18 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-//    @Override
-//    public List<OrderResponse> getOrderByCustomer(Integer customerId) throws Exception {
-//        Optional<Customer> customer = customerService.findById(customerId);
-//        if (customer.isPresent()) {
-//
-//        }else {
-//            throw new Exception("Customer does not exist");
-//        }
-//    }
+    @Override
+    public List<Orders> getOrderByCustomer(Integer customerId) throws Exception {
+        Optional<Customer> customer = customerService.findById(customerId);
+        if (customer.isPresent()) {
+            return orderRepository.findByCustomer(customer.get());
+        }else {
+            throw new Exception("Customer does not exist");
+        }
+    }
+
+    @Override
+    public Optional<Orders> findById(Integer orderId) {
+        return orderRepository.findById(orderId);
+    }
 }
