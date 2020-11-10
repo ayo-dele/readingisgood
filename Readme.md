@@ -16,6 +16,9 @@ A book can belong in many different orders. An order can contain many books.
 ### Postman Test Collection
 https://www.getpostman.com/collections/087a954348323af60793
 
+### Swagger/OpenApi Url
+{{baseurl}}/swagger-ui/index.html e.g http://localhost:8080/swagger-ui/index.html 
+
 ### Stack
 Spring Boot, H2 (database).
 
